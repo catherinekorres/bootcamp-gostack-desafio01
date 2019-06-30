@@ -40,7 +40,7 @@ server.post("/projects", (req, res) =>{
   return res.json(projects);
 });
 
-// Updates project
+// Update project
 server.put("/projects/:id", (req, res) => {
   const { id } = req.params;
   const { title } = req.body;
@@ -48,6 +48,17 @@ server.put("/projects/:id", (req, res) => {
   const index = projects.findIndex(item => item.id === id);
 
   projects[index].title = title;
+
+  return res.json(projects);
+});
+
+// Delete project
+server.delete("/projects/:id", (req, res) => {
+  const { id } = req.params;
+
+  const index = projects.findIndex(item => item.id === id);
+
+  projects.splice(index, 1);
 
   return res.json(projects);
 });
