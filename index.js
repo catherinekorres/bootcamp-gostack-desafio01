@@ -63,4 +63,16 @@ server.delete("/projects/:id", (req, res) => {
   return res.json(projects);
 });
 
+// Create task in project
+server.post("/projects/:id/tasks", (req, res) => {
+  const { id } = req.params;
+  const { title } = req.body;
+
+  const index = projects.findIndex(item => item.id === id);
+
+  projects[index].tasks.push(title);
+
+  return res.json(projects);
+});
+
 server.listen(3333);
