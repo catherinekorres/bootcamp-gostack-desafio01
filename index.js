@@ -27,4 +27,17 @@ server.get("/projects", (req, res) =>{
   return res.json(projects);
 });
 
+// Create project
+server.post("/projects", (req, res) =>{
+  const project = {
+    id: req.body.id,
+    title: req.body.title,
+    tasks: []
+  }
+
+  projects.push(project);
+
+  return res.json(projects);
+});
+
 server.listen(3333);
