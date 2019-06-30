@@ -22,9 +22,17 @@ const projects = [
   }
 ];
 
-// Read projects
+// Read project(s)
 server.get("/projects", (req, res) =>{
   return res.json(projects);
+});
+
+server.get("/projects/:id", (req, res) =>{
+  const { id } = req.params;
+
+  const index = projects.findIndex(item => item.id === id);
+
+  return res.json(projects[index]);
 });
 
 // Create project
