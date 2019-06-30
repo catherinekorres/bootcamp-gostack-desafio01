@@ -40,9 +40,9 @@ server.use((req, res, next) => {
 function checkProjectExists(req, res, next) {
   const { id } = req.params;
 
-  const index = projects.findIndex(item => item.id === id);
+  const project = projects.find(item => item.id === id);
 
-  if(index == -1){
+  if(!project){
     return res.status(400).json({ error: 'Project does not exist'});
   }
 
