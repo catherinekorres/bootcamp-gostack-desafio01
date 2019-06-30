@@ -40,4 +40,16 @@ server.post("/projects", (req, res) =>{
   return res.json(projects);
 });
 
+// Updates project
+server.put("/projects/:id", (req, res) => {
+  const { id } = req.params;
+  const { title } = req.body;
+
+  const index = projects.findIndex(item => item.id === id);
+
+  projects[index].title = title;
+
+  return res.json(projects);
+});
+
 server.listen(3333);
