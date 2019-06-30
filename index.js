@@ -22,6 +22,20 @@ const projects = [
   }
 ];
 
+var counter = 0;
+
+// Global middleware - Counts total requests in an app instance
+server.use((req, res, next) => {
+  console.time('Request');
+  counter++;
+  console.log(`Total de requisições: ${counter}`); 
+  console.log(`Método ${req.method}; URL: ${req.url};`);
+  
+  next();
+
+  console.timeEnd('Request');
+});
+
 // Middleware - Check if project exists using an id as a parameter
 function checkProjectExists(req, res, next) {
   const { id } = req.params;
