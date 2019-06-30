@@ -60,7 +60,7 @@ server.delete("/projects/:id", (req, res) => {
 
   projects.splice(index, 1);
 
-  return res.json(projects);
+  return res.send();
 });
 
 // Create task in project
